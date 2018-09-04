@@ -3,7 +3,7 @@ version: '2.2'
 
 services:
 
-  web_base:
+  web-base:
     build:
       context: .
-    image: cyberdojo/web_base
+    image: cyberdojo/web-base
