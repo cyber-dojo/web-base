@@ -31,6 +31,7 @@ COPY Gemfile  ${WEB_HOME}/
 WORKDIR       ${WEB_HOME}
 
 RUN  apk --update --no-cache add --virtual build-dependencies build-base \
+  && echo "gem: --no-rdoc --no-ri" > ~/.gemrc \
   && bundle config --global silence_root_warning 1 \
   && bundle install \
   && apk del build-dependencies build-base \
