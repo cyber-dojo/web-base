@@ -26,8 +26,8 @@ RUN apk --update --upgrade --no-cache add \
 # install gems
 # - - - - - - - - - - - - - - - - -
 
-COPY Gemfile  /cyber-dojo/
 WORKDIR /cyber-dojo
+COPY Gemfile .
 
 RUN apk --update --upgrade --no-cache add --virtual build-dependencies build-base \
   && echo "gem: --no-rdoc --no-ri" > ~/.gemrc \
