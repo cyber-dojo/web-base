@@ -12,7 +12,7 @@ LABEL maintainer=jon@jaggersoft.com
 #   zlib-dev for nokogiri
 # - - - - - - - - - - - - - - - - -
 
-RUN apk --update --no-cache add \
+RUN apk --update --upgrade --no-cache add \
     bash \
     libffi-dev \
     ruby \
@@ -29,7 +29,7 @@ RUN apk --update --no-cache add \
 COPY Gemfile  /cyber-dojo/
 WORKDIR /cyber-dojo
 
-RUN  apk --update --no-cache add --virtual build-dependencies build-base \
+RUN apk --update --upgrade --no-cache add --virtual build-dependencies build-base \
   && echo "gem: --no-rdoc --no-ri" > ~/.gemrc \
   && bundle config --global silence_root_warning 1 \
   && bundle install \
