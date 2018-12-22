@@ -1,5 +1,6 @@
 services: docker
 language: node_js
+bundler_args: --retry 5
 git:
   depth: 1
   quiet: true
