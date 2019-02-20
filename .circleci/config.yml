@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-image:
+  build-publish-trigger:
 
     machine:
       enabled: true
@@ -10,23 +10,33 @@ jobs:
     steps:
       - checkout
       - run:
-          name: build rack-base docker image and push image to docker hub
+          name: build docker image
           command: |
-            set -e
-            echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
+            set -ev
             ./pipe_build_up_test.sh
+      - run:
+          name: publish tagged docker image on dockerhub
+          command: |
+            set -ev
             readonly project=${CIRCLE_PROJECT_REPONAME}
             docker tag  cyberdojo/${project}:latest cyberdojo/${project}:${CIRCLE_SHA1:0:7}
             docker tag  cyberdojo/${project}:latest cyberdojo/${project}:beta
+            echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
             docker push cyberdojo/${project}:${CIRCLE_SHA1:0:7}
             docker push cyberdojo/${project}:beta
-            curl --fail -X POST https://circleci.com/api/v1.1/project/github/cyber-dojo/web/build?circle-token=${CIRCLECI_BUILD_TOKEN}
+            docker push cyberdojo/${project}:latest
+      - run:
+          name: trigger dependent repos
+          command: |
+            set -ev
+            ./sh/trigger_dependent_repos.sh "${CIRCLE_SHA1:0:7}" \
+               https://github.com/cyber-dojo/web.git    \
 
 workflows:
   version: 2
-  build-publish:
+  build-publish-trigger:
     jobs:
-      - build-image:
+      - build-publish-trigger:
           context: cyberdojo-context
           filters:
             branches:
