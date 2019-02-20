@@ -30,7 +30,7 @@ jobs:
           command: |
             set -ev
             ./sh/trigger_dependent_repos.sh "${CIRCLE_SHA1:0:7}" \
-               https://github.com/cyber-dojo/web.git    \
+               https://github.com/cyber-dojo/web.git
 
 workflows:
   version: 2
