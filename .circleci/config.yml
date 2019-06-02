@@ -29,8 +29,10 @@ jobs:
           name: trigger dependent repos
           command: |
             set -e
-            ./sh/trigger_dependent_repos.sh "${CIRCLE_SHA1:0:7}" \
-               https://github.com/cyber-dojo/web.git
+            ./sh/trigger_dependent_repos.sh \
+               "${CIRCLE_PROJECT_REPONAME}" \
+               "${CIRCLE_SHA1}" \
+                 web
 
 workflows:
   version: 2
