@@ -12,7 +12,7 @@ for REPO_NAME in ${REPO_NAMES}; do
   cd /tmp
   git clone "${REPO_URL}"
   cd "${REPO_NAME}"
-  declare MESSAGE="automated build trigger from ${COMMIT_URL}}"
+  declare MESSAGE="automated build trigger from ${COMMIT_URL}"
   echo "${MESSAGE}" > ${FROM}.trigger
   git add .
   git config --global user.email "cyber-dojo-machine-user@cyber-dojo.org"
