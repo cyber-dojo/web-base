@@ -228,6 +228,4 @@ Successfully built c66f9077962d
 Successfully tagged cyberdojo/web-base:latest
 ```
 
-- - - -
-
 ![cyber-dojo.org home page](https://github.com/cyber-dojo/cyber-dojo/blob/master/shared/home_page_snapshot.png)
