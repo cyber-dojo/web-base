@@ -15,24 +15,29 @@ jobs:
             set -e
             ./pipe_build_up_test.sh
       - run:
+          name: tag docker image
+          command: |
+            set -e
+            TAG=tag-image.sh
+            curl -O --fail ${CIRCLECI_SCRIPT_DIR}/${TAG}
+            chmod 700 ./${TAG}
+            ./${TAG}
+      - run:
           name: publish tagged docker image on dockerhub
           command: |
             set -e
-            TAG_AND_PUBLISH=tag-and-publish-image.sh
-            curl -O --fail https://raw.githubusercontent.com/cyber-dojo/cyber-dojo/master/dev/${TAG_AND_PUBLISH}
-            chmod 700 ./${TAG_AND_PUBLISH}
-            ./${TAG_AND_PUBLISH}
+            PUBLISH=publish-tagged-image.sh
+            curl -O --fail ${CIRCLECI_SCRIPT_DIR}/${PUBLISH}
+            chmod 700 ./${PUBLISH}
+            ./${PUBLISH}
       - run:
           name: trigger dependent repos
           command: |
             set -e
             TRIGGER=trigger-dependent-repos.sh
-            curl -O --fail https://raw.githubusercontent.com/cyber-dojo/cyber-dojo/master/dev/${TRIGGER}
+            curl -O --fail ${CIRCLECI_SCRIPT_DIR}/${TRIGGER}
             chmod 700 ./${TRIGGER}
-            ./${TRIGGER} \
-               "${CIRCLE_PROJECT_REPONAME}" \
-               "${CIRCLE_SHA1}" \
-                 web
+            ./${TRIGGER} web
 
 workflows:
   version: 2
