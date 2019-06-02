@@ -18,18 +18,18 @@ jobs:
           name: publish tagged docker image on dockerhub
           command: |
             set -e
-            readonly project=${CIRCLE_PROJECT_REPONAME}
-            docker tag  cyberdojo/${project}:latest cyberdojo/${project}:${CIRCLE_SHA1:0:7}
-            docker tag  cyberdojo/${project}:latest cyberdojo/${project}:beta
-            echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
-            docker push cyberdojo/${project}:${CIRCLE_SHA1:0:7}
-            docker push cyberdojo/${project}:beta
-            docker push cyberdojo/${project}:latest
+            TAG_AND_PUBLISH=tag-and-publish-image.sh
+            curl -O --fail https://raw.githubusercontent.com/cyber-dojo/cyber-dojo/master/dev/${TAG_AND_PUBLISH}
+            chmod 700 ./${TAG_AND_PUBLISH}
+            ./${TAG_AND_PUBLISH}
       - run:
           name: trigger dependent repos
           command: |
             set -e
-            ./sh/trigger_dependent_repos.sh \
+            TRIGGER=trigger-dependent-repos.sh
+            curl -O --fail https://raw.githubusercontent.com/cyber-dojo/cyber-dojo/master/dev/${TRIGGER}
+            chmod 700 ./${TRIGGER}
+            ./${TRIGGER} \
                "${CIRCLE_PROJECT_REPONAME}" \
                "${CIRCLE_SHA1}" \
                  web
