@@ -35,3 +35,6 @@ RUN apk --update --upgrade --no-cache add --virtual build-dependencies build-bas
   && bundle install \
   && apk del build-dependencies build-base \
   && rm -vrf /var/cache/apk/*
+
+ARG COMMIT_SHA
+ENV SHA=${COMMIT_SHA}
