@@ -5,4 +5,4 @@ gem 'rails', '6'
 gem 'sassc-rails'
 gem 'thin'
 gem 'minitest'
-gem 'simplecov'
+gem 'simplecov', "0.17.0"
