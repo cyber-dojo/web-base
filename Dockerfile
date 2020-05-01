@@ -7,14 +7,12 @@ LABEL maintainer=jon@jaggersoft.com
 # I need results in an image of ~102MB whereas
 # using FROM ruby:alpine results in an image of ~162MB
 # bundle install needs
-#   libffi-dev for sass-rails
 #   tzdata for railties
 #   zlib-dev for nokogiri
 # - - - - - - - - - - - - - - - - -
 
 RUN apk --update --upgrade --no-cache add \
     bash \
-    libffi-dev \
     ruby \
     ruby-bigdecimal \
     ruby-bundler \
