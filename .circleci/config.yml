@@ -1,19 +1,23 @@
 version: 2
 jobs:
-  build-publish-trigger:
+  build-publish-deploy:
     machine:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
       - run:
           name: Build tested docker image
-          command: ./build_test_tag_publish.sh
+          command: |
+            # DOCKER_USER, DOCKER_PASS are in ci context
+            echo "${DOCKER_PASS}" | docker login --username "${DOCKER_USER}" --password-stdin
+            ./build_test_publish.sh
+            docker logout
 
 workflows:
   version: 2
-  build-publish-trigger:
+  build-publish-deploy:
     jobs:
-      - build-publish-trigger:
+      - build-publish-deploy:
           context: cyberdojo-context
           filters:
             branches:
