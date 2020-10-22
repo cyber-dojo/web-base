@@ -17,6 +17,7 @@ RUN apk --update --upgrade --no-cache add \
     ruby-bigdecimal \
     ruby-bundler \
     ruby-dev \
+    tini \
     tzdata \
     zlib-dev
 
