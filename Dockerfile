@@ -13,6 +13,7 @@ LABEL maintainer=jon@jaggersoft.com
 
 RUN apk --update --upgrade --no-cache add \
     bash \
+    git \
     ruby \
     ruby-bigdecimal \
     ruby-bundler \
