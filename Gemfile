@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'json'
-gem 'rails', '6'
+gem 'rails', '7.0.6'
 gem 'sassc-rails'
 gem 'thin'
 gem 'minitest'

@@ -9,6 +9,7 @@ LABEL maintainer=jon@jaggersoft.com
 # bundle install needs
 #   tzdata for railties
 #   zlib-dev for nokogiri
+#   gcompat is also needed for nokogiri See https://stackoverflow.com/questions/37818831
 # - - - - - - - - - - - - - - - - -
 
 RUN apk --update --upgrade --no-cache add \
@@ -20,7 +21,8 @@ RUN apk --update --upgrade --no-cache add \
     ruby-dev \
     tini \
     tzdata \
-    zlib-dev
+    zlib-dev \
+    gcompat
 
 # - - - - - - - - - - - - - - - - -
 # install gems
