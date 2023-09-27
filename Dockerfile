@@ -22,7 +22,8 @@ RUN apk --update --upgrade --no-cache add \
     tini \
     tzdata \
     zlib-dev \
-    gcompat
+    gcompat \
+    curl
 
 # - - - - - - - - - - - - - - - - -
 # install gems
