@@ -11,6 +11,7 @@ LABEL maintainer=jon@jaggersoft.com
 #   tzdata for railties
 #   zlib-dev for nokogiri
 #   gcompat is also needed for nokogiri See https://stackoverflow.com/questions/37818831
+#   curl is needed to move past snyk CVE
 #   libffi-dev is needed for sassc-rails
 # - - - - - - - - - - - - - - - - -
 
@@ -25,6 +26,7 @@ RUN apk --update --upgrade --no-cache add \
     tzdata \
     zlib-dev \
     gcompat \
+    curl \
     libffi-dev
 
 # - - - - - - - - - - - - - - - - -
