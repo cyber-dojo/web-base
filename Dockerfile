@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=alpine:3.18.4
+ARG BASE_IMAGE=alpine:3.19.0
 FROM ${BASE_IMAGE}
 LABEL maintainer=jon@jaggersoft.com
 
@@ -14,10 +14,6 @@ LABEL maintainer=jon@jaggersoft.com
 #   curl is needed to move past snyk CVE
 #   libffi-dev is needed for sassc-rails
 # - - - - - - - - - - - - - - - - -
-
-RUN apk add libcurl=8.5.0-r0        # https://security.snyk.io/vuln/SNYK-ALPINE318-CURL-6104721
-RUN apk add nghttp2-libs=1.57.0-r0  # https://security.snyk.io/vuln/SNYK-ALPINE318-NGHTTP2-5954768
-RUN apk add libcrypto3=3.1.4-r3     # https://security.snyk.io/vuln/SNYK-ALPINE318-OPENSSL-6055795
 
 RUN apk --update --upgrade --no-cache add \
     bash \
