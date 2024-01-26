@@ -29,6 +29,8 @@ RUN apk --update --upgrade --no-cache add \
     curl \
     libffi-dev
 
+RUN apk add openssl=3.1.4-r5   # https://security.snyk.io/vuln/SNYK-ALPINE319-OPENSSL-6191693
+
 # - - - - - - - - - - - - - - - - -
 # install gems
 # - - - - - - - - - - - - - - - - -
