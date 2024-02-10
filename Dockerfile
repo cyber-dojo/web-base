@@ -30,6 +30,7 @@ RUN apk --update --upgrade --no-cache add \
     libffi-dev
 
 RUN apk add openssl=3.1.4-r5   # https://security.snyk.io/vuln/SNYK-ALPINE319-OPENSSL-6191693
+RUN apk add libexpat=2.6.0-r0  # https://security.snyk.io/vuln/SNYK-ALPINE319-EXPAT-6241038
 
 # - - - - - - - - - - - - - - - - -
 # install gems
