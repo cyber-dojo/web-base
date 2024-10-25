@@ -8,3 +8,9 @@ gem 'minitest'
 gem 'puma'
 gem 'simplecov', "0.17.0"
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+
+# After Ruby 3.4.0 these are no longer in the standard library
+gem 'mutex_m'
+gem 'base64'
+gem 'bigdecimal'
+gem 'drb'
