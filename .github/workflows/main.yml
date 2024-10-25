@@ -9,7 +9,7 @@ jobs:
   pre-build:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
   build-test-push:
     needs: [pre-build]
