@@ -1,4 +1,4 @@
-FROM alpine:3.20.3
+FROM alpine:3.19.0
 LABEL maintainer=jon@jaggersoft.com
 
 # - - - - - - - - - - - - - - - - -
@@ -16,13 +16,9 @@ LABEL maintainer=jon@jaggersoft.com
 
 RUN apk --update --upgrade --no-cache add \
     bash \
-    curl \
     gcompat \
     git \
-    libexpat \
     libffi-dev \
-    nodejs \
-    openssl \
     ruby \
     ruby-bigdecimal \
     ruby-bundler \
@@ -30,6 +26,13 @@ RUN apk --update --upgrade --no-cache add \
     tini \
     tzdata \
     zlib-dev
+
+RUN apk add openssl=3.1.7-r0   # https://security.snyk.io/vuln/SNYK-ALPINE319-OPENSSL-7413527
+RUN apk add libexpat=2.6.3-r0  # https://security.snyk.io/vuln/SNYK-ALPINE319-EXPAT-7908400
+RUN apk add nodejs=20.15.1-r0  # https://security.snyk.io/vuln/SNYK-ALPINE319-NODEJS-6531253
+RUN apk add c-ares=1.27.0-r0   # https://security.snyk.io/vuln/SNYK-ALPINE319-CARES-6483773
+RUN apk add busybox=1.36.1-r19 # https://security.snyk.io/vuln/SNYK-ALPINE319-BUSYBOX-6928846
+RUN apk add curl=8.9.1-r0      # https://security.snyk.io/vuln/SNYK-ALPINE319-CURL-7567377 \
 
 # - - - - - - - - - - - - - - - - -
 # install gems
