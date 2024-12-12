@@ -30,7 +30,7 @@ RUN apk --update --upgrade --no-cache add \
     tzdata \
     zlib-dev
 
-RUN apk add libcurl=8.11.0-r1     # https://security.snyk.io/vuln/SNYK-ALPINE320-CURL-8348469
+RUN apk add libcurl=8.11.0-r2     # https://security.snyk.io/vuln/SNYK-ALPINE320-CURL-8348469
 
 WORKDIR /cyber-dojo
 COPY Gemfile .
