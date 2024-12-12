@@ -18,6 +18,7 @@ RUN apk --update --upgrade --no-cache add \
     curl \
     git \
     gcompat \
+    libcurl \
     libexpat \
     libffi-dev \
     nodejs \
@@ -29,8 +30,6 @@ RUN apk --update --upgrade --no-cache add \
     tini \
     tzdata \
     zlib-dev
-
-RUN apk add libcurl=8.11.0-r2     # https://security.snyk.io/vuln/SNYK-ALPINE320-CURL-8348469
 
 WORKDIR /cyber-dojo
 COPY Gemfile .
