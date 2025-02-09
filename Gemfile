@@ -14,3 +14,6 @@ gem 'mutex_m'
 gem 'base64'
 gem 'bigdecimal'
 gem 'drb'
+
+# https://stackoverflow.com/questions/79360526
+gem 'concurrent-ruby', '1.3.4'
