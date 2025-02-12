@@ -31,6 +31,8 @@ RUN apk --update --upgrade --no-cache add \
     tzdata \
     zlib-dev
 
+RUN apk add libcrypto3=3.3.3-r0 # https://security.snyk.io/vuln/SNYK-ALPINE320-OPENSSL-8710359
+
 WORKDIR /cyber-dojo
 COPY Gemfile .
 
