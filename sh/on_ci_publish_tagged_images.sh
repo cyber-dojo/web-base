@@ -1,6 +1,10 @@
-#!/bin/bash -Eeu
+#!/usr/bin/env bash
+set -Eeu
 
-# - - - - - - - - - - - - - - - - - - - - - - - -
+readonly ROOT_DIR="$(cd "$(dirname "${0}")" && cd .. && pwd)"
+source "${ROOT_DIR}/sh/lib.sh"
+export $(echo_env_vars)
+
 on_ci_publish_tagged_images()
 {
   if ! on_ci; then
@@ -8,32 +12,14 @@ on_ci_publish_tagged_images()
     return
   fi
   echo 'on CI so publishing tagged images'
-  local -r image="$(image_name)"
-  local -r sha="$(image_sha)"
-  local -r tag=${sha:0:7}
   echo "${DOCKER_PASS}" | docker login --username "${DOCKER_USER}" --password-stdin
-  docker push ${image}:latest
-  docker push ${image}:${tag}
+  docker push "${CYBER_DOJO_WEB_BASE_IMAGE}"
   docker logout
 }
 
-# - - - - - - - - - - - - - - - - - - - - - - - -
 on_ci()
 {
   [ -n "${CI:-}" ]
 }
 
-#- - - - - - - - - - - - - - - - - - - - - - - -
-image_name()
-{
-  echo cyberdojo/web-base
-}
-
-#- - - - - - - - - - - - - - - - - - - - - - - -
-image_sha()
-{
-  docker run --rm "$(image_name):latest" sh -c 'echo ${SHA}'
-}
-
-# - - - - - - - - - - - - - - - - - - - - - - - -
 on_ci_publish_tagged_images

@@ -1,6 +1,10 @@
-#!/bin/bash -Ee
+#!/usr/bin/env bash
+set -Eeu
 
-#- - - - - - - - - - - - - - - - - - - - - - - -
+readonly ROOT_DIR="$(cd "$(dirname "${0}")" && cd .. && pwd)"
+source "${ROOT_DIR}/sh/lib.sh"
+export $(echo_env_vars)
+
 tag_image()
 {
   local -r image="$(image_name)"
@@ -11,17 +15,14 @@ tag_image()
   echo "${tag}"
 }
 
-#- - - - - - - - - - - - - - - - - - - - - - - -
 image_name()
 {
   echo cyberdojo/web-base
 }
 
-#- - - - - - - - - - - - - - - - - - - - - - - -
 image_sha()
 {
   docker run --rm "$(image_name):latest" sh -c 'echo ${SHA}'
 }
 
-#- - - - - - - - - - - - - - - - - - - - - - - -
 tag_image
