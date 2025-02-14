@@ -114,7 +114,7 @@ jobs:
     needs: [setup, build-image, snyk-container-scan]
     strategy:
       matrix:
-        repo: [ 'cyberdojo/web' ]
+        repo: [ 'cyber-dojo/web' ]
     steps:
       - name: Run workflow
         uses: peter-evans/repository-dispatch@v3
