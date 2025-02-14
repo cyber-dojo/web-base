@@ -31,7 +31,9 @@ RUN apk --update --upgrade --no-cache add \
     tzdata \
     zlib-dev
 
-RUN apk add libcrypto3=3.3.3-r0 # https://security.snyk.io/vuln/SNYK-ALPINE320-OPENSSL-8710359
+RUN apk add libcrypto3=3.3.3-r0  # https://security.snyk.io/vuln/SNYK-ALPINE320-OPENSSL-8710359
+RUN apk add musl=1.2.5-r9        # https://security.snyk.io/vuln/SNYK-ALPINE321-MUSL-8720634
+RUN apk add musl-utils=1.2.5-r9  # https://security.snyk.io/vuln/SNYK-ALPINE321-MUSL-8720634
 
 WORKDIR /cyber-dojo
 COPY source .
