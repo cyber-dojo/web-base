@@ -122,8 +122,4 @@ jobs:
           token: ${{ secrets.TRIGGER_DOWNSTREAM_WORKFLOWS }}
           repository: ${{ matrix.repo }}
           event-type: base-image-update
-          client-payload: {
-            name: "cyberdojo/web-base",
-            tag: "${{ needs.setup.outputs.image_tag }}",
-            digest: "${{ needs.build-image.outputs.digest }}"
-          }
+          client-payload: '{"name": "cyberdojo/web-base", "tag": "${{ needs.setup.outputs.image_tag }}", "digest": "${{ needs.build-image.outputs.digest }}"}'
