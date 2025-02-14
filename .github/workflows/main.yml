@@ -110,7 +110,6 @@ jobs:
 
 
   run-downstream-workflows:
-    runs-on: ubuntu-latest
     needs: [setup, build-image, snyk-container-scan]
     uses: cyber-dojo/web/.github/workflows/main.yml@main
     with:
