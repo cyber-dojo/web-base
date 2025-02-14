@@ -1,0 +1,12 @@
+
+Log into github
+At top right user-icon, select [Settings]
+At bottom-left, click [<> Developer settings]
+At top-left, click [Personal access tokens \/] drop-down
+Click [Fine grained tokens]
+Click [Generate new token]
+Enter [Token name]
+For [Resource owner] drop-down, select [cyber-dojo]
+Fill in Expiration, Description, Repo access, Permissions
+Click [Generate token]
+Save the generated token as an Org secret.
