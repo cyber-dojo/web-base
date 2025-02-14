@@ -111,7 +111,7 @@ jobs:
 
   run-downstream-workflows:
     needs: [setup, build-image, snyk-container-scan]
-    uses: cyber-dojo/web/.github/workflows/main.yml@main
+    uses: cyber-dojo/web/.github/workflows/base_image_update.yml@main
     with:
       base_image_name:   cyberdojo/web-base
       base_image_tag:    ${{ needs.setup.outputs.image_tag }}
