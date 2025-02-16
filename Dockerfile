@@ -21,6 +21,7 @@ RUN apk --update --upgrade --no-cache add \
     libcurl \
     libexpat \
     libffi-dev \
+    yaml-dev \
     nodejs \
     openssl \
     ruby \
