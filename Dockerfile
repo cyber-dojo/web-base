@@ -32,6 +32,9 @@ RUN apk --update --upgrade --no-cache add \
     tzdata \
     zlib-dev
 
+RUN apk add --upgrade libexpat=2.7.0-r0  # https://security.snyk.io/vuln/SNYK-ALPINE321-EXPAT-9459843
+RUN apk add --upgrade c-ares=1.34.5-r0   # https://security.snyk.io/vuln/SNYK-ALPINE321-CARES-9680227
+
 WORKDIR /cyber-dojo
 COPY source .
 
