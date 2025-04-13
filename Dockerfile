@@ -1,4 +1,4 @@
-FROM alpine:3.21@sha256:56fa17d2a7e7f168a043a2712e63aed1f8543aeafdcee47c58dcffe38ed51099
+FROM alpine:3.21.3@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
 LABEL maintainer=jon@jaggersoft.com
 
 # - - - - - - - - - - - - - - - - -
@@ -31,10 +31,6 @@ RUN apk --update --upgrade --no-cache add \
     tini \
     tzdata \
     zlib-dev
-
-RUN apk add libcrypto3=3.3.3-r0  # https://security.snyk.io/vuln/SNYK-ALPINE320-OPENSSL-8710359
-RUN apk add musl=1.2.5-r9        # https://security.snyk.io/vuln/SNYK-ALPINE321-MUSL-8720634
-RUN apk add musl-utils=1.2.5-r9  # https://security.snyk.io/vuln/SNYK-ALPINE321-MUSL-8720634
 
 WORKDIR /cyber-dojo
 COPY source .
