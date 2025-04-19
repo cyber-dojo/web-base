@@ -32,8 +32,10 @@ RUN apk --update --upgrade --no-cache add \
     tzdata \
     zlib-dev
 
-RUN apk add --upgrade libexpat=2.7.0-r0  # https://security.snyk.io/vuln/SNYK-ALPINE321-EXPAT-9459843
-RUN apk add --upgrade c-ares=1.34.5-r0   # https://security.snyk.io/vuln/SNYK-ALPINE321-CARES-9680227
+RUN apk add --upgrade libexpat=2.7.0-r0      # https://security.snyk.io/vuln/SNYK-ALPINE321-EXPAT-9459843
+RUN apk add --upgrade c-ares=1.34.5-r0       # https://security.snyk.io/vuln/SNYK-ALPINE321-CARES-9680227
+RUN apk add --upgrade sqlite=3.48.0-r1       # https://security.snyk.io/vuln/SNYK-ALPINE321-SQLITE-9712340
+RUN apk add --upgrade sqlite-libs=3.48.0-r1  # https://security.snyk.io/vuln/SNYK-ALPINE321-SQLITE-9712340
 
 WORKDIR /cyber-dojo
 COPY source .
