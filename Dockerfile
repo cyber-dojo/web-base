@@ -36,6 +36,7 @@ RUN apk add --upgrade c-ares=1.34.5-r0       # https://security.snyk.io/vuln/SNY
 RUN apk add --upgrade sqlite=3.48.0-r2       # https://security.snyk.io/vuln/SNYK-ALPINE321-SQLITE-9712340
 RUN apk add --upgrade sqlite-libs=3.48.0-r2  # https://security.snyk.io/vuln/SNYK-ALPINE321-SQLITE-9712340
 RUN apk add --upgrade ruby=3.3.8-r0          # https://security.snyk.io/vuln/SNYK-ALPINE321-RUBY-9802138
+RUN apk add --upgrade nodejs=22.15.1-r0      # https://security.snyk.io/vuln/SNYK-ALPINE321-NODEJS-10272456
 
 WORKDIR /cyber-dojo
 COPY source .
