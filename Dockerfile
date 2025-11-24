@@ -1,4 +1,3 @@
-#FROM alpine:3.21.3@sha256:a8560b36e8b8210634f77d9f7f9efd7ffa463e380b75e2e74aff4511df3ef88c
 FROM alpine:3.22.2@sha256:4b7ce07002c69e8f3d704a9c5d6fd3053be500b7f1c69fc0d80990c2ad8dd412
 
 LABEL maintainer=jon@jaggersoft.com
@@ -32,13 +31,6 @@ RUN apk --update --upgrade --no-cache add \
     tini \
     tzdata \
     zlib-dev
-
-#RUN apk add --upgrade libexpat=2.7.0-r0      # https://security.snyk.io/vuln/SNYK-ALPINE321-EXPAT-9459843
-#RUN apk add --upgrade c-ares=1.34.5-r0       # https://security.snyk.io/vuln/SNYK-ALPINE321-CARES-9680227
-#RUN apk add --upgrade sqlite=3.48.0-r2       # https://security.snyk.io/vuln/SNYK-ALPINE321-SQLITE-9712340
-#RUN apk add --upgrade sqlite-libs=3.48.0-r2  # https://security.snyk.io/vuln/SNYK-ALPINE321-SQLITE-9712340
-#RUN apk add --upgrade ruby=3.3.8-r0          # https://security.snyk.io/vuln/SNYK-ALPINE321-RUBY-9802138
-#RUN apk add --upgrade nodejs=22.15.1-r0      # https://security.snyk.io/vuln/SNYK-ALPINE321-NODEJS-10272456
 
 WORKDIR /cyber-dojo
 COPY source .
